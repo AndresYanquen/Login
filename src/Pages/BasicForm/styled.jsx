@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  height: 100%;
   padding: 10px;
-  @media (min-width: 769px) {
-    width: 100%;
-  }
+`;
+
+export const BackgroundC = styled.div`
+  height: 100%;
+  padding: 10px;
 `;

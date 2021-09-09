@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
 import { Card } from "./styled";
 import InitialPage from "../InitialPage";
 import NameShop from "../NameShop";
+import RelatedWeb from "../RelatedWeb";
+import ShopLocation from "../ShopLocation";
 
 export const BasicForm = () => {
   const [page, setPage] = useState(0);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([0]);
   const printData = () => {
     console.log(data);
   };
@@ -19,6 +19,19 @@ export const BasicForm = () => {
       name: json.name,
       password: json.password,
     };
+
+    console.log(3, info.name);
+    setData((data) => [...data, info]);
+    console.log(data);
+  };
+
+  const saveDataShop = (json) => {
+    console.log(1, json);
+    console.log(json.nameshop);
+    let info = {
+      nameshop: json.nameshop,
+    };
+
     console.log(3, info.name);
     setData((data) => [...data, info]);
     console.log(data);
@@ -26,6 +39,10 @@ export const BasicForm = () => {
 
   const nextPage = () => {
     setPage(page + 1);
+  };
+
+  const pageBefore = () => {
+    setPage(page - 1);
   };
 
   return (
@@ -39,9 +56,19 @@ export const BasicForm = () => {
       )}
 
       {page === 1 && (
-        <>
-          <NameShop></NameShop>
-        </>
+        <NameShop
+          saveDataShop={saveDataShop}
+          printData={printData}
+          nextPage={nextPage}
+          pageBefore={pageBefore}
+        ></NameShop>
+      )}
+      {page === 2 && (
+        <ShopLocation
+          saveData={saveData}
+          nextPage={nextPage}
+          printData={printData}
+        ></ShopLocation>
       )}
     </Card>
   );

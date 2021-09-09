@@ -2,11 +2,23 @@ import styled from "styled-components";
 
 import { Field } from "formik";
 
+export const CardInitial = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 10px;
+`;
+
 export const FormContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  height: 100%;
 
   form {
     display: flex;
@@ -27,32 +39,29 @@ export const Logo = styled.div`
 `;
 
 export const Subtitle = styled.div`
-  width: 80%;
+  width: 90%;
   display: flex;
   color: white;
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   justify-content: center;
   align-items: center;
-  @media (min-width: 769px) {
-    width: 38%;
-  }
-  @media (min-width: 1024px) {
-    width: 29%;
+  margin-top: 20px;
+  @media (min-width: 640px) {
+    width: 65%;
   }
 `;
 
 export const InitialComment = styled.div`
   display: flex;
-  padding-top: 20px;
-  font-size: 30px;
+  padding-top: 50px;
+  font-size: 26px;
   justify-content: center;
-  margin-top: 50px;
 `;
 
 export const InitialDescription = styled.div`
   display: flex;
-  font-size: 18px;
+  font-size: 15px;
   justify-content: center;
   margin: 10px 0px;
   width: 85%;
@@ -114,27 +123,6 @@ export const ButtonMaterial = styled.button`
   );
 `;
 
-export const FieldInput = styled(Field)`
-  height: 30px;
-  border-radius: 5px;
-  padding: 5px 10px;
-  background-color: white;
-  border: none;
-  width: 85%;
-  margin: 10px 0px;
-  @media (min-width: 769px) {
-    width: 250px;
-  }
-
-  @media (min-width: 800px) {
-    width: 45%;
-  }
-
-  @media (min-width: 1024px) {
-    width: 45%;
-  }
-`;
-
 export const StyleButton = styled.button`
   background: linear-gradient(
     90deg,
@@ -153,4 +141,23 @@ export const StyleButton = styled.button`
   font-weight: 500;
   font-size: 13px;
   box-shadow: 3px 6px 6px 2px rgba(0, 0, 0, 0.1);
+`;
+
+export const FieldContainerError = styled.div`
+  width: 250px;
+  height: ${(props) => (props.active ? "80px" : "40px")};
+  margin: 0px 10px;
+`;
+
+export const FieldInput = styled(Field)`
+  height: 30px;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+  width: 100%;
+  margin: 10px 0px;
+
+  div {
+    height: ${(props) => (props.active ? "auto" : "0")};
+  }
 `;

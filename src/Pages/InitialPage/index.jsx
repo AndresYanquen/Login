@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { Card } from "../BasicForm/styled";
 import {
+  CardInitial,
+  FieldContainerError,
   FieldInput,
   FormContainer,
   InitialComment,
@@ -13,9 +14,7 @@ import {
   StyleButton,
   Subtitle,
   TextFieldsInitial,
-  TextLabels,
 } from "./styled";
-import { Button } from "@material-ui/core";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,14 +22,12 @@ const SignupSchema = Yup.object().shape({
     .max(50, "¡Nombre muy largo!")
     .required("¡Nombre obligatorio"),
   password: Yup.string()
-    .min(4, "¡Contraseña muy corta!")
-    .required("¡Contraseña obligatoria!"),
+    .min(2, "Contraseña muy corta!")
+    .max(50, "Contraseña muy larga!")
+    .required("Contraseña obligatoria"),
 });
 
 const InitialPage = ({ saveData, nextPage }) => {
-  const [page, setPage] = useState(0);
-  const [data, setData] = useState([]);
-
   return (
     <FormContainer>
       <Logo>
@@ -49,8 +46,7 @@ const InitialPage = ({ saveData, nextPage }) => {
       <LabelInfo>
         <Formik
           initialValues={{
-            name: "",
-            password: "",
+            nameshop: "",
           }}
           validationSchema={SignupSchema}
           onSubmit={(values) => {
@@ -61,12 +57,28 @@ const InitialPage = ({ saveData, nextPage }) => {
           {({ errors, touched }) => (
             <Form>
               <TextFieldsInitial>
-                <FieldInput placeholder="Ingrese su nombre" name="name" />
-                {errors.name && touched.name ? <div>{errors.name}</div> : null}
-                <FieldInput placeholder="Contraseña" name="password" />
-                {errors.password && touched.password ? (
-                  <div>{errors.password}</div>
-                ) : null}{" "}
+                <FieldContainerError active={errors.name && touched.name}>
+                  <FieldInput
+                    placeholder="Ingrese su nombre"
+                    name="name"
+                    active={errors.name && touched.name}
+                  />
+                  {errors.name && touched.name ? (
+                    <div>{errors.name}</div>
+                  ) : null}
+                </FieldContainerError>
+                <FieldContainerError
+                  active={errors.password && touched.password}
+                >
+                  <FieldInput
+                    placeholder="Contraseña"
+                    name="password"
+                    active={errors.password && touched.password}
+                  />
+                  {errors.password && touched.password ? (
+                    <div>{errors.password}</div>
+                  ) : null}{" "}
+                </FieldContainerError>
               </TextFieldsInitial>
 
               <LabelButton>

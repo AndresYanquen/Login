@@ -1,13 +1,22 @@
+import { Field, Form } from "formik";
 import styled from "styled-components";
-import { Form, Field } from "formik";
 
-export const ContainerShop = styled.div`
+export const CardInitial = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 10px;
+`;
+
+export const ContainerLocation = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   img {
-    width: 75%;
+    width: 100%;
     height: 250px;
   }
 `;
@@ -37,6 +46,18 @@ export const FormStyled = styled(Form)`
 
   @media (min-width: 480px) {
     width: 100%;
+  }
+`;
+
+export const FieldInput = styled(Field)`
+  height: 30px;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+  width: 100%;
+  margin: 10px 0px;
+  div {
+    height: ${(props) => (props.active ? "auto" : "0")};
   }
 `;
 
@@ -87,22 +108,4 @@ export const StyleButtonBack = styled.button`
   font-weight: 500;
   font-size: 13px;
   box-shadow: 3px 6px 6px 2px rgba(0, 0, 0, 0.1);
-`;
-
-export const FieldInput = styled(Field)`
-  height: 30px;
-  border-radius: 5px;
-  background-color: white;
-  border: none;
-  width: 100%;
-  margin: 10px 0px;
-  div {
-    height: ${(props) => (props.active ? "auto" : "0")};
-  }
-`;
-
-export const FieldContainerError = styled.div`
-  width: 250px;
-  height: ${(props) => (props.active ? "80px" : "40px")};
-  margin: 0px 10px;
 `;
