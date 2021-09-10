@@ -13,12 +13,12 @@ export const CardInitial = styled.div`
 
 export const FormContainer = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   margin-top: 30px;
-  height: 100%;
 
   form {
     display: flex;

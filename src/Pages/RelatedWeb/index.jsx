@@ -1,5 +1,6 @@
 import React from "react";
 import * as Yup from "yup";
+import Radio from "@material-ui/core/Radio";
 import {
   CardInitial,
   ContainerButtons,
@@ -14,14 +15,13 @@ import {
   TopSeparator,
   UrlLabel,
 } from "./styled";
-import Radio from "@material-ui/core/Radio";
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 
 const SignupSchema = Yup.object().shape({
   url: Yup.string().required("¡Url obligatoria!"),
 });
 
-const RelatedWeb = ({ saveDataShop, printData, nextPage, pageBefore }) => {
+const RelatedWeb = ({ saveDataWeb, printData, nextPage, pageBefore }) => {
   const [selectedValue, setSelectedValue] = React.useState("a");
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -40,6 +40,8 @@ const RelatedWeb = ({ saveDataShop, printData, nextPage, pageBefore }) => {
           validationSchema={SignupSchema}
           onSubmit={(values) => {
             console.log(values);
+            saveDataWeb(values);
+            nextPage();
           }}
         >
           {({ errors, touched }) => (
@@ -68,6 +70,7 @@ const RelatedWeb = ({ saveDataShop, printData, nextPage, pageBefore }) => {
             </FormStyled>
           )}
         </Formik>
+        <button onClick={printData}> DATA</button>
       </ContainerWeb>
     </CardInitial>
   );

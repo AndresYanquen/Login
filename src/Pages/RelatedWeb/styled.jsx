@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 export const CardInitial = styled.div`
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: yellowgreen;
+
   img {
     width: 250px;
     height: 250px;
@@ -19,7 +20,7 @@ export const ContainerWeb = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: brown;
+
   img {
     width: 75%;
     height: 250px;
@@ -29,7 +30,7 @@ export const ContainerWeb = styled.div`
 export const Subtitle = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0px 5px;
+  padding: 0px 10px;
   p {
     font-weight: 700;
     font-size: 25px;
@@ -45,13 +46,13 @@ export const FormStyled = styled(Form)`
   width: 80%;
   height: auto;
 
-  @media (min-width: 480px) {
-    width: 100%;
+  @media (min-width: 320px) {
+    width: 80%;
   }
 `;
 
 export const UrlLabel = styled.div`
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +64,7 @@ export const UrlLabel = styled.div`
 
   @media (min-width: 900px) {
     p {
-      display: block;
+      display: flex;
       font-weight: 700;
       font-size: 25px;
     }

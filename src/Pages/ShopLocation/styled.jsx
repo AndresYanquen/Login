@@ -6,8 +6,6 @@ export const CardInitial = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding: 10px;
 `;
 
 export const ContainerLocation = styled.div`

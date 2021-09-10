@@ -60,7 +60,7 @@ const NameShop = ({ saveDataShop, printData, nextPage, pageBefore }) => {
             </FormStyled>
           )}
         </Formik>{" "}
-        <button onClick={printData}> Data</button>
+        {/*   <button onClick={printData}> Data</button> */}
       </ContainerShop>
     </CardInitial>
   );

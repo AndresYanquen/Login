@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Card } from "./styled";
+import { Card, CardName } from "./styled";
 import InitialPage from "../InitialPage";
 import NameShop from "../NameShop";
 import RelatedWeb from "../RelatedWeb";
 import ShopLocation from "../ShopLocation";
+import ConfirmationPage from "../ConfirmationPage";
 
 export const BasicForm = () => {
   const [page, setPage] = useState(0);
@@ -39,12 +40,12 @@ export const BasicForm = () => {
 
   const saveDataLocation = (json) => {
     console.log(1, json);
-    console.log(json.nameshop);
+    console.log(json.locationshop);
     let info = {
-      nameshop: json.nameshop,
+      locationshop: json.locationshop,
     };
 
-    console.log(3, info.name);
+    console.log(3, info.locationshop);
     setData((data) => [...data, info]);
     console.log(data);
   };
@@ -70,40 +71,56 @@ export const BasicForm = () => {
   };
 
   return (
-    <Card>
+    <div>
       {page === 0 && (
-        <InitialPage
-          saveData={saveData}
-          nextPage={nextPage}
-          printData={printData}
-        ></InitialPage>
+        <Card>
+          <InitialPage
+            saveData={saveData}
+            nextPage={nextPage}
+            printData={printData}
+          ></InitialPage>
+        </Card>
       )}
 
       {page === 1 && (
-        <NameShop
-          saveDataShop={saveDataShop}
-          printData={printData}
-          nextPage={nextPage}
-          pageBefore={pageBefore}
-        ></NameShop>
+        <CardName>
+          <NameShop
+            saveDataShop={saveDataShop}
+            printData={printData}
+            nextPage={nextPage}
+            pageBefore={pageBefore}
+          ></NameShop>
+        </CardName>
       )}
       {page === 2 && (
-        <ShopLocation
-          saveDataLocation={saveDataLocation}
-          nextPage={nextPage}
-          printData={printData}
-          pageBefore={pageBefore}
-        ></ShopLocation>
+        <CardName>
+          <ShopLocation
+            saveDataLocation={saveDataLocation}
+            nextPage={nextPage}
+            printData={printData}
+            pageBefore={pageBefore}
+          ></ShopLocation>
+        </CardName>
       )}
       {page === 3 && (
-        <RelatedWeb
-          saveDataWeb={saveDataWeb}
-          nextPage={nextPage}
-          printData={printData}
-          pageBefore={pageBefore}
-        ></RelatedWeb>
+        <CardName>
+          {" "}
+          <RelatedWeb
+            saveDataWeb={saveDataWeb}
+            nextPage={nextPage}
+            printData={printData}
+            pageBefore={pageBefore}
+          ></RelatedWeb>
+        </CardName>
       )}
-    </Card>
+
+      {page === 4 && (
+        <CardName>
+          {" "}
+          <ConfirmationPage></ConfirmationPage>
+        </CardName>
+      )}
+    </div>
   );
 };
 

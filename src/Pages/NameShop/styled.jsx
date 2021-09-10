@@ -5,8 +5,8 @@ export const CardInitial = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  height: auto;
   justify-content: center;
-  height: 100vh;
   padding: 10px;
 `;
 
@@ -15,6 +15,7 @@ export const ContainerShop = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: 100%;
   img {
     width: 75%;
     height: 250px;
