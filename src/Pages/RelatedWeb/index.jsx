@@ -11,6 +11,7 @@ import {
   StyleButton,
   StyleButtonBack,
   Subtitle,
+  TopSeparator,
   UrlLabel,
 } from "./styled";
 import Radio from "@material-ui/core/Radio";
@@ -52,8 +53,10 @@ const RelatedWeb = ({ saveDataShop, printData, nextPage, pageBefore }) => {
                 <p>.tu-ecommerce.cl </p>
               </UrlLabel>
               {errors.url && touched.url ? <div>{errors.url}</div> : null}
+              <TopSeparator>
+                <p>PASO 2</p>
+              </TopSeparator>
 
-              <p>PASO 2</p>
               <ContainerButtons>
                 <StyleButtonBack onClick={pageBefore}>
                   <h3> ATRÁS </h3>

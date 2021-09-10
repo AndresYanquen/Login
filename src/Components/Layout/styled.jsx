@@ -7,6 +7,5 @@ export const LayoutContainer = styled.div`
   background-color: #00bf97;
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: "Roboto", sans-serif;
 `;

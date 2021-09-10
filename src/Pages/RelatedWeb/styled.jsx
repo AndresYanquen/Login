@@ -6,13 +6,20 @@ export const CardInitial = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: yellowgreen;
+  img {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 export const ContainerWeb = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background-color: brown;
   img {
     width: 75%;
     height: 250px;
@@ -37,10 +44,6 @@ export const FormStyled = styled(Form)`
   align-items: center;
   width: 80%;
   height: auto;
-  p {
-    padding-top: 50px;
-    font-size: 15px;
-  }
 
   @media (min-width: 480px) {
     width: 100%;
@@ -53,9 +56,17 @@ export const UrlLabel = styled.div`
   justify-content: center;
   align-items: center;
   p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-weight: 700;
+    font-size: 25px;
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    p {
+      display: block;
+      font-weight: 700;
+      font-size: 25px;
+    }
   }
 `;
 
@@ -77,7 +88,7 @@ export const FieldInput = styled(Field)`
   padding: 5px 10px;
   background-color: white;
   border: none;
-  width: 85%;
+  width: 330px;
   margin: 10px 0px;
 `;
 
@@ -86,6 +97,10 @@ export const ContainerButtons = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const TopSeparator = styled.div`
+  padding-top: 50px;
 `;
 
 export const StyleButton = styled.button`
