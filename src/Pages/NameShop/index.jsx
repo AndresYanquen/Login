@@ -2,6 +2,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import React from "react";
 import {
+  CardInitial,
   ContainerButtons,
   ContainerShop,
   FieldInput,
@@ -20,46 +21,48 @@ const SignupSchema = Yup.object().shape({
 
 const NameShop = ({ saveDataShop, printData, nextPage, pageBefore }) => {
   return (
-    <div>
-      <img src="icons/woman.svg" alt="shop"></img>
-      <Subtitle>
-        <p> Elija el nombre de su tienda</p>
-      </Subtitle>
-      <Formik
-        initialValues={{
-          nameshop: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={(values) => {
-          console.log(values);
-          saveDataShop(values);
-          nextPage();
-        }}
-      >
-        {({ errors, touched }) => (
-          <FormStyled>
-            <FieldInput
-              placeholder="Ingrese el nombre de su tienda"
-              name="nameshop"
-              active={errors.nameshop && touched.nameshop}
-            />
-            {errors.nameshop && touched.nameshop ? (
-              <div>{errors.nameshop}</div>
-            ) : null}
-            <p>PASO 2</p>
-            <ContainerButtons>
-              <StyleButtonBack onClick={pageBefore}>
-                <h3> ATRÁS </h3>
-              </StyleButtonBack>
-              <StyleButton type="submit">
-                <h3> SIGUIENTE</h3>
-              </StyleButton>
-            </ContainerButtons>
-          </FormStyled>
-        )}
-      </Formik>{" "}
-      <button onClick={printData}> Data</button>
-    </div>
+    <CardInitial>
+      <ContainerShop>
+        <img src="icons/woman.svg" alt="shop"></img>
+        <Subtitle>
+          <p> Elija el nombre de su tienda</p>
+        </Subtitle>
+        <Formik
+          initialValues={{
+            nameshop: "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={(values) => {
+            console.log(values);
+            saveDataShop(values);
+            nextPage();
+          }}
+        >
+          {({ errors, touched }) => (
+            <FormStyled>
+              <FieldInput
+                placeholder="Ingrese el nombre de su tienda"
+                name="nameshop"
+                active={errors.nameshop && touched.nameshop}
+              />
+              {errors.nameshop && touched.nameshop ? (
+                <div>{errors.nameshop}</div>
+              ) : null}
+              <p>PASO 2</p>
+              <ContainerButtons>
+                <StyleButtonBack onClick={pageBefore}>
+                  <h3> ATRÁS </h3>
+                </StyleButtonBack>
+                <StyleButton type="submit">
+                  <h3> SIGUIENTE</h3>
+                </StyleButton>
+              </ContainerButtons>
+            </FormStyled>
+          )}
+        </Formik>{" "}
+        <button onClick={printData}> Data</button>
+      </ContainerShop>
+    </CardInitial>
   );
 };
 

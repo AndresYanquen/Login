@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import { Form, Field } from "formik";
 
+export const CardInitial = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 10px;
+`;
+
 export const ContainerShop = styled.div`
   display: flex;
   flex-direction: column;
