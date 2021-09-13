@@ -1,35 +1,33 @@
 import React, { useState } from "react";
-import { Card, CardName } from "./styled";
+import { Card, CardName, FormStyled } from "./styled";
+import * as Yup from "yup";
 import InitialPage from "../InitialPage";
 import NameShop from "../NameShop";
 import RelatedWeb from "../RelatedWeb";
 import ShopLocation from "../ShopLocation";
 import ConfirmationPage from "../ConfirmationPage";
+import { Formik } from "formik";
+
+const SignupSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "¡Nombre muy corto!")
+    .max(50, "¡Nombre muy largo!")
+    .required("¡Nombre obligatorio"),
+  password: Yup.string()
+    .min(2, "Contraseña muy corta!")
+    .max(50, "Contraseña muy larga!")
+    .required("Contraseña obligatoria"),
+});
 
 export const BasicForm = () => {
+  const initialValues = {
+    name: "",
+    password: "",
+    nameshop: "",
+    url: "",
+    locationshop: "",
+  };
   const [page, setPage] = useState(0);
-  const [data, setData] = useState({
-    name: "",
-    password: "",
-    nameshop: "",
-    url: "",
-    locationshop: "",
-  });
-  const [data2, setData2] = useState({
-    name: "",
-    password: "",
-    nameshop: "",
-    url: "",
-    locationshop: "",
-  });
-  const printData = () => {
-    console.log(data);
-  };
-
-  const saveData = (json) => {
-    /* { ...obj, name: { first: 'blah', last: 'ha'} } */
-    console.log({ ...data, ...json });
-  };
 
   const nextPage = () => {
     setPage(page + 1);
@@ -40,56 +38,70 @@ export const BasicForm = () => {
   };
 
   return (
-    <div>
-      {page === 0 && (
-        <Card>
-          <InitialPage
-            saveData={saveData}
-            nextPage={nextPage}
-            printData={printData}
-          ></InitialPage>
-        </Card>
-      )}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={SignupSchema}
+      onSubmit={(values) => {
+        console.log(values);
+        nextPage();
+      }}
+    >
+      {({ errors, touched }) => (
+        <FormStyled>
+          {page === 0 && (
+            <Card>
+              <InitialPage
+                errors={errors}
+                touched={touched}
+                nextPage={nextPage}
+              ></InitialPage>
+            </Card>
+          )}
 
-      {page === 1 && (
-        <CardName>
-          <NameShop
-            saveData={saveData}
-            printData={printData}
-            nextPage={nextPage}
-            pageBefore={pageBefore}
-          ></NameShop>
-        </CardName>
-      )}
-      {page === 2 && (
-        <CardName>
-          <ShopLocation
-            saveData={saveData}
-            nextPage={nextPage}
-            printData={printData}
-            pageBefore={pageBefore}
-          ></ShopLocation>
-        </CardName>
-      )}
-      {page === 3 && (
-        <CardName>
-          {" "}
-          <RelatedWeb
-            saveData={saveData}
-            nextPage={nextPage}
-            printData={printData}
-            pageBefore={pageBefore}
-          ></RelatedWeb>
-        </CardName>
-      )}
+          {page === 1 && (
+            <CardName>
+              <NameShop
+                errors={errors}
+                touched={touched}
+                nextPage={nextPage}
+                pageBefore={pageBefore}
+              ></NameShop>
+            </CardName>
+          )}
+          {page === 2 && (
+            <CardName>
+              <ShopLocation
+                errors={errors}
+                touched={touched}
+                nextPage={nextPage}
+                pageBefore={pageBefore}
+              ></ShopLocation>
+            </CardName>
+          )}
+          {page === 3 && (
+            <CardName>
+              {" "}
+              <RelatedWeb
+                errors={errors}
+                touched={touched}
+                nextPage={nextPage}
+                pageBefore={pageBefore}
+              ></RelatedWeb>
+            </CardName>
+          )}
 
-      {page === 4 && (
-        <CardName>
-          {" "}
-          <ConfirmationPage></ConfirmationPage>
-        </CardName>
+          {page === 4 && (
+            <CardName>
+              {" "}
+              <ConfirmationPage
+                errors={errors}
+                touched={touched}
+              ></ConfirmationPage>
+            </CardName>
+          )}
+        </FormStyled>
       )}
-    </div>
+    </Formik>
   );
 };
 
