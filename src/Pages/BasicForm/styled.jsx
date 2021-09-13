@@ -21,14 +21,7 @@ export const FormStyled = styled(Form)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 95%;
+  overflow-x: hidden;
   height: auto;
-  p {
-    padding-top: 50px;
-    font-size: 15px;
-  }
-
-  @media (min-width: 480px) {
-    width: 95%;
-  }
 `;

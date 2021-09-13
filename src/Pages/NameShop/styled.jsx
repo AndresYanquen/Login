@@ -103,7 +103,7 @@ export const FieldInput = styled(Field)`
   border-radius: 5px;
   background-color: white;
   border: none;
-  width: 100%;
+  width: 95%;
   margin: 10px 0px;
   div {
     height: ${(props) => (props.active ? "auto" : "0")};
