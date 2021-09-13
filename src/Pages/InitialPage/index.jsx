@@ -1,8 +1,8 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { Card } from "../BasicForm/styled";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import {
-  CardInitial,
   FieldContainerError,
   FieldInput,
   FormContainer,
@@ -15,6 +15,7 @@ import {
   Subtitle,
   TextFieldsInitial,
 } from "./styled";
+import { useState } from "react";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,6 +29,26 @@ const SignupSchema = Yup.object().shape({
 });
 
 const InitialPage = ({ saveData, nextPage }) => {
+  const [values, setValues] = useState({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <FormContainer>
       <Logo>

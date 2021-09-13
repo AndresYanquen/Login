@@ -22,8 +22,15 @@ export const ContainerWeb = styled.div`
   align-items: center;
 
   img {
-    width: 75%;
+    width: 300px;
     height: 250px;
+  }
+
+  @media (min-width: 769px) {
+    img {
+      width: 400px;
+      height: 250px;
+    }
   }
 `;
 

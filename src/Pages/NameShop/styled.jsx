@@ -7,13 +7,12 @@ export const CardInitial = styled.div`
   align-items: center;
   height: auto;
   justify-content: center;
-  padding: 10px;
 `;
 
 export const ContainerShop = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100%;
   img {
@@ -46,7 +45,7 @@ export const FormStyled = styled(Form)`
   }
 
   @media (min-width: 480px) {
-    width: 100%;
+    width: 95%;
   }
 `;
 

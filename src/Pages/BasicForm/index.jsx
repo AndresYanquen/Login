@@ -8,58 +8,27 @@ import ConfirmationPage from "../ConfirmationPage";
 
 export const BasicForm = () => {
   const [page, setPage] = useState(0);
-  const [data, setData] = useState([0]);
+  const [data, setData] = useState({
+    name: "",
+    password: "",
+    nameshop: "",
+    url: "",
+    locationshop: "",
+  });
+  const [data2, setData2] = useState({
+    name: "",
+    password: "",
+    nameshop: "",
+    url: "",
+    locationshop: "",
+  });
   const printData = () => {
     console.log(data);
   };
 
   const saveData = (json) => {
-    console.log(1, json);
-    console.log(json.name);
-    let info = {
-      name: json.name,
-      password: json.password,
-    };
-
-    console.log(3, info.name);
-    setData((data) => [...data, info]);
-    console.log(data);
-  };
-
-  const saveDataShop = (json) => {
-    console.log(1, json);
-    console.log(json.nameshop);
-    let info = {
-      nameshop: json.nameshop,
-    };
-
-    console.log(3, info.name);
-    setData((data) => [...data, info]);
-    console.log(data);
-  };
-
-  const saveDataLocation = (json) => {
-    console.log(1, json);
-    console.log(json.locationshop);
-    let info = {
-      locationshop: json.locationshop,
-    };
-
-    console.log(3, info.locationshop);
-    setData((data) => [...data, info]);
-    console.log(data);
-  };
-
-  const saveDataWeb = (json) => {
-    console.log(1, json);
-    console.log(json.url);
-    let info = {
-      url: json.url,
-    };
-
-    console.log(3, info.url);
-    setData((data) => [...data, info]);
-    console.log(data);
+    /* { ...obj, name: { first: 'blah', last: 'ha'} } */
+    console.log({ ...data, ...json });
   };
 
   const nextPage = () => {
@@ -85,7 +54,7 @@ export const BasicForm = () => {
       {page === 1 && (
         <CardName>
           <NameShop
-            saveDataShop={saveDataShop}
+            saveData={saveData}
             printData={printData}
             nextPage={nextPage}
             pageBefore={pageBefore}
@@ -95,7 +64,7 @@ export const BasicForm = () => {
       {page === 2 && (
         <CardName>
           <ShopLocation
-            saveDataLocation={saveDataLocation}
+            saveData={saveData}
             nextPage={nextPage}
             printData={printData}
             pageBefore={pageBefore}
@@ -106,7 +75,7 @@ export const BasicForm = () => {
         <CardName>
           {" "}
           <RelatedWeb
-            saveDataWeb={saveDataWeb}
+            saveData={saveData}
             nextPage={nextPage}
             printData={printData}
             pageBefore={pageBefore}

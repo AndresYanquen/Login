@@ -21,7 +21,7 @@ const SignupSchema = Yup.object().shape({
   url: Yup.string().required("¡Url obligatoria!"),
 });
 
-const RelatedWeb = ({ saveDataWeb, printData, nextPage, pageBefore }) => {
+const RelatedWeb = ({ saveData, printData, nextPage, pageBefore }) => {
   const [selectedValue, setSelectedValue] = React.useState("a");
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -40,7 +40,7 @@ const RelatedWeb = ({ saveDataWeb, printData, nextPage, pageBefore }) => {
           validationSchema={SignupSchema}
           onSubmit={(values) => {
             console.log(values);
-            saveDataWeb(values);
+            saveData(values);
             nextPage();
           }}
         >

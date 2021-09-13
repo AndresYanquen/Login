@@ -19,7 +19,7 @@ const SignupSchema = Yup.object().shape({
     .required("¡Nombre obligatorio"),
 });
 
-const NameShop = ({ saveDataShop, printData, nextPage, pageBefore }) => {
+const NameShop = ({ saveData, printData, nextPage, pageBefore }) => {
   return (
     <CardInitial>
       <ContainerShop>
@@ -34,7 +34,7 @@ const NameShop = ({ saveDataShop, printData, nextPage, pageBefore }) => {
           validationSchema={SignupSchema}
           onSubmit={(values) => {
             console.log(values);
-            saveDataShop(values);
+            saveData(values);
             nextPage();
           }}
         >
@@ -60,7 +60,7 @@ const NameShop = ({ saveDataShop, printData, nextPage, pageBefore }) => {
             </FormStyled>
           )}
         </Formik>{" "}
-        {/*   <button onClick={printData}> Data</button> */}
+        <button onClick={printData}> Data</button>
       </ContainerShop>
     </CardInitial>
   );

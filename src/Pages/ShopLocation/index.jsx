@@ -16,12 +16,7 @@ const SignupSchema = Yup.object().shape({
   locationshop: Yup.string().required("¡Ubicación obligatoria!"),
 });
 
-const ShopLocation = ({
-  saveDataLocation,
-  printData,
-  nextPage,
-  pageBefore,
-}) => {
+const ShopLocation = ({ saveData, printData, nextPage, pageBefore }) => {
   return (
     <CardInitial>
       <ContainerLocation>
@@ -36,7 +31,7 @@ const ShopLocation = ({
           validationSchema={SignupSchema}
           onSubmit={(values) => {
             console.log(values);
-            saveDataLocation(values);
+            saveData(values);
             nextPage();
           }}
         >

@@ -6,7 +6,6 @@ export const Card = styled.div`
   overflow-y: hidden;
   justify-content: center;
   height: 100vh;
-  padding: 10px;
 `;
 
 export const CardName = styled.div`
@@ -14,5 +13,4 @@ export const CardName = styled.div`
   overflow-y: hidden;
   justify-content: center;
   height: 100vh;
-  padding: 10px;
 `;
